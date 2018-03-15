@@ -10,12 +10,12 @@ html, body {
 	font-size: 22px;
 	font-weight: normal;
 	
-	background-color: #f6f6f6;
-	color: #673ab7;
+	background-color: #161616;
+	color: #8a4bfa;
 }
 
 a, a:link, a:visited {
-	color: #009688;
+	color: #00c7b4;
 	font-weight: normal;
 	text-decoration: none;
 }
@@ -40,13 +40,13 @@ p {
 }
 
 .section {
-	margin-top: 1em;
+	margin-top: 1.5em;
 }
 
-#links {
+.hor {
 	list-style-type: none;
 }
 
-#links li {
+.hor li {
 	display: inline;
 }
