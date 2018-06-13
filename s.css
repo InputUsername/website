@@ -6,7 +6,7 @@ html, body, h1, div, p, a, ul, li {
 html, body {
 	text-align: center;
 	
-	font-family: sans-serif;
+	font-family: monospace;
 	font-size: 22px;
 	font-weight: normal;
 	
@@ -16,7 +16,6 @@ html, body {
 
 a, a:link, a:visited {
 	color: #00c7b4;
-	font-weight: normal;
 	text-decoration: none;
 }
 
