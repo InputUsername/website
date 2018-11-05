@@ -9,8 +9,10 @@ html, body {
 	font-family: monospace;
 	font-size: 22px;
 	font-weight: normal;
+
+	letter-spacing: 0.15em;
 	
-	background-color: #161616;
+	background-color: #000;
 	color: #8a4bfa;
 }
 
