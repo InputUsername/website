@@ -1,7 +1,0 @@
-{
-	"remove_extra_newlines": true,
-	"cache_css": false,
-	"css_minify_attempts": 5,
-	"pages": ["index.html"],
-	"other": []
-}
