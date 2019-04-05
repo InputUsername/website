@@ -1,17 +1,18 @@
-html {
-	background: url(back.jpeg) no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+body {
+	font-family: monospace;
+	font-size: 20px;
+
+	color: #000;
+	background-color: #fff;
+	
+	text-align: center;
 }
 
-body {
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 24px;
-	font-weight: normal;
+h1 {
+	margin: 0;
+	margin-top: 20%;
+}
 
-	color: #fff;
-
-	text-shadow: #000 0px 0px 50px;
+a {
+	color: #f00;
 }
