@@ -1,5 +1,5 @@
 body {
-	font-family: monospace;
+	font-family: sans-serif;
 	font-size: 20px;
 
 	color: #000;
@@ -11,6 +11,8 @@ body {
 h1 {
 	margin: 0;
 	margin-top: 20%;
+
+	font-weight: normal;
 }
 
 a {
