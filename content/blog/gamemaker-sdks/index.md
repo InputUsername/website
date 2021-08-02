@@ -1,13 +1,12 @@
 +++
 title = "Using third-party SDKs with GameMaker"
-date = 2021-07-28
-draft = true
+date = 2021-08-02
 +++
 
 GameMaker is a fantastic tool with many functionalities for game development built right in.
 We used it to create [Void Invaders] and
 right until the final stages of development, all we needed were the tools provided by GameMaker.
-Sometimes though GameMaker's functionality isn't enough. Or maybe you want to integrate with a
+Sometimes though GameMaker's functionality might not be enough. Or maybe you want to integrate with a
 library like Logitech's [Arx Control SDK]. If you're lucky, the library provides bindings for
 GameMaker, and using it is a matter of including the plugin in your game project. Most of the time
 you're out of luck.
@@ -20,9 +19,10 @@ you're out of luck.
 Or are you? What if I told you that it's not even that difficult to integrate a library like Arx Control?
 
 In this article I'll briefly go into how we ended up using the Arx Control SDK in Void Invaders,
-and along the way you'll hopefully learn a bit more about GameMaker extensions (and also some C++).
-Note that this article has been written with GameMaker: Studio 1 and Windows in mind.
-It can probably be adapted to other platforms quite easily, but we'll focus on GM:S 1 and Windows.
+and along the way you'll hopefully learn a bit more about GameMaker (and also some C++).
+Note that this article has been written with GameMaker: Studio 1 and Windows in mind, because that's
+what we used for Void Invaders. It's probably possible to adapt this to other platforms and other
+versions of GameMaker, but we'll focus on GMS 1 and Windows.
 
 ## Arx Control SDK
 
@@ -37,8 +37,8 @@ However, this DLL is incompatible with GameMaker out of the box, but still we wo
 The incompatibility arises because GameMaker in practice only supports two data types when talking
 to external DLLs: strings (mapping to `char*` in C/C++) and reals (mapping to `double`).
 Yes, this means GameMaker doesn't even have booleans.
-In fact, any value below `0.5` is accepted as false, values above `0.5` are true.
-`true` and `false` are simply aliases for `1` and `0`.
+In fact, any value below `0.5` is accepted as false, while values above `0.5` are true.
+The `true` and `false` keywords are simply aliases for `1` and `0`.
 
 Anyway, some of the exported functions in the Arx Control DLL reference other types, and so we can't
 call these functions from GameMaker directly.
@@ -62,7 +62,7 @@ Instead of calling into the Arx Control DLL, what we will do is create a wrapper
 in C++ that uses only strings and doubles in its public interface. This wrapper DLL will
 then take care of loading the actual DLL and calling its functions with the proper arguments.
 
-Creating a new DLL project is easy using Visual Studio, but any editor/compiler combination will
+Creating a new DLL project is easy using Visual Studio, but any editor/compiler combination *should*
 work fine as long as it can produce Windows DLLs. Our basic wrapper will consist of a header and a
 source file.
 
@@ -96,10 +96,18 @@ extern "C"
 #endif // LOGITECH_WRAPPER_H
 ```
 
-The function prototypes are enclosed by an `extern "C"` block to prevent C++'s name mangling.
+The function prototypes are enclosed by an `extern "C"` block to prevent C++'s [name mangling];
+name mangling is a process where C++ symbol names are transformed to conform to C naming rules. We don't
+want this, because then we have no idea what our functions are called when we compile our DLL.
+
+[name mangling]: https://en.wikipedia.org/wiki/Name_mangling
+
 Each function is annotated with the `GMEXPORT` macro. This is a shorthand for functions exported
-by our wrapper DLL, with `__cdecl` calling convention. What this means is not that important;
+by our wrapper DLL, with `__cdecl` [calling convention]. What this means is not that important;
 it just makes sure GameMaker can correctly call into the functions that our DLL exports.
+(This will be important later.)
+
+[calling convention]: https://en.wikipedia.org/wiki/Calling_convention
 
 Let's implement them as well:
 
@@ -145,6 +153,8 @@ double GMEXPORT GArx_FreeDLL()
     return 1;
 }
 ```
+
+## Making our library actually do something
 
 Currently, our DLL doesn't do much apart from loading and releasing the Arx DLL using the `LoadLibrary()`
 and `FreeLibrary()` functions from the Win32 API. To change that, we need to obtain the addresses
@@ -285,7 +295,7 @@ that, it's a matter of calling the respective functions.
 This is a bit different for the other functions, because they take `wchar_t*` strings and not `char*`
 like GameMaker. Luckily Windows' API has the `MultiByteToWideChar()` function, which we can use
 to convert the (UTF-8 encoded) `char*` strings to `wchar_t*` strings. We'll have to do this a couple
-times, so let's create a utility function for it:
+of times, so let's create a utility function for it:
 
 `main.cpp`
 ```c++
@@ -330,3 +340,36 @@ double GMEXPORT GArx_Initialize(char* identifier, char* friendlyName)
 
 ...
 ```
+
+Whew. I may have slightly overstated how easy this would be (it took me a good couple days to figure it all out).
+That's all the code we'll have to write for now, though. We can go ahead and compile our wrapper to
+a DLL and include it in our game alongside the Arx Control DLL.
+
+## Wrapping it all up
+
+Now that we have our wrapper DLL, we can start using it in GameMaker. We'll create a new extension
+(right click Extensions &RightArrow; Create Extension). Give it a descriptive name, eg. "LogitechGArx";
+the other settings can remain default. Then, we'll add both the Arx Control DLL
+(which is, confusingly, called <code>Logitech&shy;GArx&shy;Control&shy;Engines&shy;Wrapper.dll</code>) and our wrapper
+by right click clicking LogitechGArx &RightArrow; Add File. Last off, we can start adding our functions
+one-by-one! To do this, right click the wrapper DLL &RightArrow; Add Function.
+
+![Adding a DLL function in GameMaker: Studio](GArx_Initialize.png)
+
+The name is what we will use to call the function in GameMaker. Its *External Name* is whatever the
+exported name in our wrapper library was; in our case, `GArx_Initialize`. *Help* is a help
+message that shows when auto-completing the function. Usually you want this to be the name of the
+function and the list of parameters. You can select the return type to be `double` or `string`.
+For our library, every function returns a `double`. *Type* is the calling convention. Which one you
+use is not that important, just make sure it's the same as you defined earlier. I picked `cdecl` because
+Arx Control uses `cdecl` as well. To be honest, I'm not sure if it matters, but this *seemed* to work
+when we released Void Invaders. Parameters can be added using the `+`/`-` buttons. `GArx_Initialize`
+takes two string parameters.
+
+And there you have it! We're now be able to use `GArx_InitializeDLL()` and `GArx_FreeDLL()` in
+GameMaker to load and unload the Arx Control DLL, and call its functions to use Arx Control with
+our game! Hopefully, it won't be difficult to apply this approach to other libraries, too.
+
+Of course, I'm not a GameMaker expert, nor a C++ expert, nor a Windows programming expert:
+if anything looks off, doesn't work or is a crime against humanity, don't hesitate to
+[contact me](mailto:koen.bolhuis@gmail.com).
