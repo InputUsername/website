@@ -370,6 +370,5 @@ And there you have it! We're now be able to use `GArx_InitializeDLL()` and `GArx
 GameMaker to load and unload the Arx Control DLL, and call its functions to use Arx Control with
 our game! Hopefully, it won't be difficult to apply this approach to other libraries, too.
 
-Of course, I'm not a GameMaker expert, nor a C++ expert, nor a Windows programming expert:
-if anything looks off, doesn't work or is a crime against humanity, don't hesitate to
-[contact me](mailto:koen.bolhuis@gmail.com).
+*Of course, I'm not a GameMaker, C++ or Windows programming expert -
+if anything looks off or doesn't work, don't hesitate to [contact me](mailto:koen.bolhuis@gmail.com).*
