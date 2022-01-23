@@ -23,3 +23,11 @@ like Last.fm and ListenBrainz as they play.
 - Documented where the session token is stored
 
 [Release](https://github.com/InputUsername/rescrobbled/releases/tag/v0.5.0)
+
+## Patches
+
+### v0.5.1 (2022-01-23)
+
+- Fixed the way player D-Bus bus names are checked against the player whitelist
+
+[Release](https://github.com/InputUsername/rescrobbled/releases/tag/v0.5.1)
