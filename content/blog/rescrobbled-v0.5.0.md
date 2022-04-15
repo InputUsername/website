@@ -31,3 +31,13 @@ like Last.fm and ListenBrainz as they play.
 - Fixed the way player D-Bus bus names are checked against the player whitelist
 
 [Release](https://github.com/InputUsername/rescrobbled/releases/tag/v0.5.1)
+
+### v0.5.2 (2022-03-04)
+
+- Improved error handling
+  - More consistent error messages
+  - Causes of errors are now always included
+- Fixed `basic.py` and `ignore_artists.py` filter script examples
+- Updated dependencies
+
+[Release](https://github.com/InputUsername/rescrobbled/releases/tag/v0.5.2)
