@@ -41,3 +41,10 @@ like Last.fm and ListenBrainz as they play.
 - Updated dependencies
 
 [Release](https://github.com/InputUsername/rescrobbled/releases/tag/v0.5.2)
+
+### v0.5.3 (2022-06-16)
+
+- Entered Last.fm passwords are no longer displayed in plaintext
+- Updated dependencies
+
+[Release](https://github.com/InputUsername/rescrobbled/releases/tag/v0.5.3)
