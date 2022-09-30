@@ -6,10 +6,10 @@ extra.in_header = true
 
 Hi! My name is Koen and I'm a developer and Computing Science student from The Netherlands.
 I've obtained a Bachelor's degree in Computing Science from the University of Groningen,
-and I'm currently doing my Master's in Software Science at Radboud University.
+and I'm currently doing a Master's degree in Software Engineering and Distributed Systems.
 
-I've been programming for a long time, and over the years I've created a whole bunch of projects.
-Most of them are available on my [GitHub], but below is a selection of some of the more interesting ones.
+Over the years I've worked on a wide range of projects. Most of them are available on [GitHub],
+but below is a selection of some of the more interesting ones.
 
 [GitHub]: https://github.com/InputUsername
 
