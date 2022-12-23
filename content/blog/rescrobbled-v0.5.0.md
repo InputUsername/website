@@ -1,6 +1,7 @@
 +++
 title = "rescrobbled v0.5.0"
 date = 2022-01-04
+description = "rescrobbled v0.5.0 changelog"
 +++
 
 [Rescrobbled](https://github.com/InputUsername/rescrobbled) is a universal music scrobbling daemon

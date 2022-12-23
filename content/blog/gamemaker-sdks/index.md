@@ -1,9 +1,10 @@
 +++
 title = "Using third-party SDKs with GameMaker"
 date = 2021-08-02
+description = "Wrapping third-party libraries to work with GameMaker: Studio"
 +++
 
-GameMaker is a fantastic tool with many functionalities for game development built right in.
+GameMaker is a fantastic tool with many functionalities for game development built in.
 We used it to create [Void Invaders] and
 right until the final stages of development, all we needed were the tools provided by GameMaker.
 Sometimes though GameMaker's functionality might not be enough. Or maybe you want to integrate with a
