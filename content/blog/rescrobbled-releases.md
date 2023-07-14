@@ -1,7 +1,7 @@
 +++
-title = "rescrobbled v0.7.0"
+title = "rescrobbled v0.7.1"
 date = 2019-09-15
-updated = 2023-01-23
+updated = 2023-07-13
 description = "rescrobbled releases"
 +++
 
@@ -10,6 +10,11 @@ It detects active media players running on D-Bus using MPRIS, automatically upda
 status, and scrobbles songs to Last.fm or ListenBrainz-compatible services as they play.
 
 ## Changelog
+
+### [v0.7.1] (2023-07-13)
+
+- Made album name optional when submitting to Last.fm
+- Updated dependencies
 
 ### [v0.7.0] (2023-01-20)
 
@@ -141,6 +146,7 @@ Initial release
 
 <!---->
 
+[v0.7.1]: https://github.com/InputUsername/rescrobbled/releases/v0.7.1
 [v0.7.0]: https://github.com/InputUsername/rescrobbled/releases/v0.7.0
 [v0.6.2]: https://github.com/InputUsername/rescrobbled/releases/v0.6.2
 [v0.6.1]: https://github.com/InputUsername/rescrobbled/releases/v0.6.1
