@@ -76,6 +76,8 @@ The issue lies in the highlighted lines. The middleware tries to retrieve the se
 
 [middleware documentation]: https://next-auth.js.org/configuration/nextjs#middleware
 
+But it's very easy to miss, and it might just cost you two days of debugging. -_-
+
 ## The solution
 
 The easiest way around this is to manually enable the `jwt` session strategy in `[...nextauth].ts`. There are [many downsides] to this though, and so this wasn't a solution for the project I was working on.
