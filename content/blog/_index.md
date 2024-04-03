@@ -1,4 +1,4 @@
 +++
 title = "Blog"
-sort_by = "update_date"
+sort_by = "date"
 +++
