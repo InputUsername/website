@@ -7,4 +7,6 @@ Last Thursday, August 1<sup>st</sup>, I finally submitted my master's thesis. Ov
 
 After creating the catalog, I implemented rules in two popular IaC linters, [Checkov](https://checkov.io) and [TFLint](https://github.com/terraform-linters/tflint) to detect instances of several of the patterns and antipatterns, to hopefully help developers find out when they are writing cost-inefficient Terraform. The thesis was awarded a grade of 9.5/10, and I'm proud of the end result. You can read it [here](https://fse.studenttheses.ub.rug.nl/id/eprint/33811).
 
+Many thanks to my supervisors [Vasilios Andrikopoulos](https://vandriko.github.io) and [Daniel Feitosa](https://feitosa-daniel.github.io) for their guidance and collaboration.
+
 Finishing the thesis also means I've graduated (with honors) from my master's degree in Software Engineering and Distributed Systems. I'm excited to see what the future holds!
