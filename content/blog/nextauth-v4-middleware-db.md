@@ -1,6 +1,7 @@
 +++
 title = "NextAuth v4 middleware and database session strategy"
 date = 2024-02-05
+description = "How to use NextAuth (v4) in your Next.js middleware while using the database session strategy"
 +++
 
 Next.js supports middleware that runs before a request is completed. When using NextAuth v4 [^1], you can use this to require authentication to access routes. NextAuth even includes a convenient default middleware that simply protects all routes. Unfortunately, when you try to use this default middleware in combination with the `database` session strategy (which is the default when using a database adapter), things break in subtle ways.

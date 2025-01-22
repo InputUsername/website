@@ -1,6 +1,7 @@
 +++
 title = "I finished my master's thesis!"
 date = 2024-08-07
+description = "I finished my master's thesis, co-authored a publication and graduated from my master's in CS"
 +++
 
 Last Thursday, August 1<sup>st</sup>, I finally submitted my master's thesis. Over the past six months, I researched how developers of cloud software address cost issues in their Infrastructure as Code codebases. I analyzed a set of commits on Terraform files to find cost-effective and -ineffective practices, and extracted a catalog of patterns and antipatterns for cost management. The catalog was actually turned into a paper and accepted at the *50th Euromicro Conference Series for Software Engineering and Advanced Applications (SEAA) 2024*, which is pretty cool.
