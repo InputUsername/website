@@ -147,6 +147,4 @@ const middleware = async (req: NextRequest) => {
 };
 ```
 
----
-
 [^1]: The project I was working on was stuck on NextAuth v4. Newer versions handle middleware differently, so it's possible that this issue is now resolved.
