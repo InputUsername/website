@@ -12,7 +12,7 @@ To see why this happens, let's look at the [source code] of the middleware:
 
 [source code]: https://github.com/nextauthjs/next-auth/blob/v4/packages/next-auth/src/next/middleware.ts
 
-```typescript,hl_lines=36-41
+```typescript,name=middleware.ts,linenos,linenostart=99,hl_lines=36-41
 async function handleMiddleware(
   req: NextRequest,
   options: NextAuthMiddlewareOptions | undefined,

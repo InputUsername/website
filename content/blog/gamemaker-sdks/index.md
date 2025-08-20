@@ -69,8 +69,7 @@ source file.
 
 First, we'll define some functions for managing the Arx Control DLL:
 
-`main.h`
-```c++
+```c++,name=main.h
 #ifndef LOGITECH_WRAPPER_H
 #define LOGITECH_WRAPPER_H
 
@@ -112,8 +111,7 @@ it just makes sure GameMaker can correctly call into the functions that our DLL 
 
 Let's implement them as well:
 
-`main.cpp`
-```c++
+```c++,name=main.cpp
 #include <windows.h>
 #include "main.h"
 
@@ -164,8 +162,7 @@ we can start writing wrapper functions that call the functions with proper argum
 
 First, we'll need to define the function pointers to all of the functions we want to use:
 
-`main.h`
-```c++
+```c++,name=main.h
 ...
 
 // Library handle
@@ -200,8 +197,7 @@ Basically, the `typedef`s define the types of pointers to functions, and below i
 some global variables using these types. Now all that's left to do before we can start using them
 is to initialize these variables with the right addresses of functions:
 
-`main.cpp`
-```c++
+```c++,name=main.cpp
 double GMEXPORT GArx_InitializeDLL()
 {
     if (hLibrary) return 1;
@@ -242,8 +238,7 @@ Now, at any point between calls to `GArx_InitializeDLL()` and `GArx_FreeDLL()`, 
 `hLibrary` is not `NULL`, our function pointers point to the right functions, and we can start
 calling them.
 
-`main.h`
-```c++
+```c++,name=main.h
 ...
 
 // Exported functions
@@ -269,8 +264,7 @@ extern "C"
 
 `GArx_GetLastError()` and `GArx_Shutdown()` are the easiest to implement, so we'll start by doing that:
 
-`main.cpp`
-```c++
+```c++,name=main.cpp
 ...
 
 double GMEXPORT GArx_GetLastError()
@@ -298,8 +292,7 @@ like GameMaker. Luckily Windows' API has the `MultiByteToWideChar()` function, w
 to convert the (UTF-8 encoded) `char*` strings to `wchar_t*` strings. We'll have to do this a couple
 of times, so let's create a utility function for it:
 
-`main.cpp`
-```c++
+```c++,name=main.cpp
 #include <string>
 #include <cstring>
 #include <windows.h>
@@ -320,8 +313,7 @@ wchar_t* sToWcs(char* str)
 Using `sToWcs()`, implementing the rest of the functions is a breeze. Below is the implementation of
 `GArx_Initialize()`; the others are very similar.
 
-`main.cpp`
-```c++
+```c++,name=main.cpp
 ...
 
 double GMEXPORT GArx_Initialize(char* identifier, char* friendlyName)
